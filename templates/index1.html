@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Ethereum prediction</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+<h1>ETH Price Analysis</h1>
+<br>
+
+ <div class="login">
+	<h1>Finalized predicted price</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('epredict')}}"method="post">
+
+
+    <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+<div class="badam">
+<form action="{{ url_for('esenti1')}}"method="post">
+
+
+    <button type="submit" class="btn btn-primary btn-block btn-large">Sentiments rate last 30 minutes</button>
+    </form>
+{{ senti_text }}
+
+<br>
+<form action="{{ url_for('eaverages')}}"method="post">
+
+
+    <button type="submit" class="btn btn-primary btn-block btn-large">calculate averages last 10 days</button>
+    </form>
+{{ avg_text }}
+ <br>
+
+ <form action="{{ url_for('epredict_whale')}}"method="post">
+
+
+    <button type="submit" class="btn btn-primary btn-block btn-large">Get whale information</button>
+    </form>
+{{ prediction_whale }}
+
+
+
+<br>
+    <form action="{{ url_for('esenti_ana')}}"method="post">
+
+
+    <button type="submit" class="btn btn-primary btn-block btn-large">Get reddit sentiment information</button>
+    </form>
+{{ senti_ana_text }}
+<br>
+    <form action="{{ url_for('eget_sell_or_buy_price')}}"method="post">
+
+
+    <button type="submit" class="btn btn-primary btn-block btn-large">buy or sell at what price? for intraday trading</button>
+    </form>
+{{ get_sell_or_buy_price_text }}
+<br>
+
+<form action="{{ url_for('get_sell_or_buy_price')}}"method="post">
+
+
+    <button type="submit" class="btn btn-primary btn-block btn-large">Switch to Bitcoin analysis</button>
+    </form>
+    <br>
+</div>
+
+</body>
+</html>
